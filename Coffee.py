@@ -93,11 +93,9 @@ def hello_world():
 def main():
     coffee_list = json_reader()
     user_lon, user_lat = where_are_you()
-    print('Рисуем карту')
     new_coffee_list = new_coffee_list_maker(coffee_list, user_lon, user_lat)
     sorted_coffee_list = sorted(new_coffee_list, key=min_distance)[:5]
     map_maker(user_lat, user_lon, sorted_coffee_list)
-    print('Готово!')
     app = Flask(__name__)
     app.add_url_rule('/', 'hello', hello_world)
     app.run('0.0.0.0')
